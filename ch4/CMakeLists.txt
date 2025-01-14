@@ -3,10 +3,12 @@ project(useSophus)
 
 # 为使用 sophus，需要使用find_package命令找到它
 find_package(Sophus REQUIRED)
+include_directories( ${Sophus_INCLUDE_DIRS} )
 
 # Eigen
 include_directories("/usr/include/eigen3")
 add_executable(useSophus useSophus.cpp)
-target_link_libraries(useSophus Sophus::Sophus)
+target_include_directories(useSophus PRIVATE /home/roger/Documents/GitHub/slambook2/3rdparty/Sophus/build)
+target_link_libraries(useSophus PRIVATE Sophus::Sophus)
 
 add_subdirectory(example)
